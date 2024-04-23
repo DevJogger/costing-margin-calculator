@@ -1,14 +1,13 @@
-'use client'
 import { useState, useMemo, useEffect } from 'react'
 import { showAsMoney } from '@/common/helperFunctions'
 
 interface RowProps {
   title: string
-  updateCostSum: (index: number, value: number) => void
+  updateSum: (index: number, value: number) => void
   id: number
 }
 
-export default function Row({ title, updateCostSum, id }: RowProps) {
+export default function Row({ title, updateSum, id }: RowProps) {
   const [unit, setUnit] = useState(0)
   const [qty, setQty] = useState(0)
   const total = useMemo(() => {
@@ -16,8 +15,8 @@ export default function Row({ title, updateCostSum, id }: RowProps) {
   }, [unit, qty])
 
   useEffect(() => {
-    updateCostSum(id, total)
-  }, [total, updateCostSum, id])
+    updateSum(id, total)
+  }, [total, updateSum, id])
 
   return (
     <div className="flex h-16 items-center odd:backdrop-contrast-75 even:backdrop-contrast-125">
