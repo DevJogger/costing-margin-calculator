@@ -1,11 +1,18 @@
 import { showAsMoney } from '@/common/helperFunctions'
+import { type Tab } from '@/types/Tabs'
 
 interface TabBarProps {
-  onTabClick: (tab: 'cost' | 'price' | 'margin') => void
+  onTabClick: (tab: Tab) => void
   costSum: number
   priceSum: number
   marginSum: number
 }
+
+const TABS: { name: Tab; background: string }[] = [
+  { name: 'cost', background: 'bg-purple-800' },
+  { name: 'price', background: 'bg-cyan-700' },
+  { name: 'margin', background: 'bg-pink-800' },
+]
 
 export default function TabBar({
   onTabClick,
@@ -13,12 +20,6 @@ export default function TabBar({
   priceSum,
   marginSum,
 }: TabBarProps) {
-  const TABS: { name: 'cost' | 'price' | 'margin'; background: string }[] = [
-    { name: 'cost', background: 'bg-purple-800' },
-    { name: 'price', background: 'bg-cyan-700' },
-    { name: 'margin', background: 'bg-pink-800' },
-  ]
-
   return (
     <footer className="flex h-16 gap-1 bg-white pb-2 dark:bg-stone-900">
       {TABS.map((tab, i) => (
