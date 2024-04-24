@@ -4,9 +4,9 @@ interface HeadBarProps {
 
 export default function HeadBar({ title }: HeadBarProps) {
   return (
-    <div className="flex items-center h-16 backdrop-brightness-75">
+    <div className="flex h-16 items-center backdrop-brightness-75">
       {title.map((t, i) => (
-        <div key={i} className="flex-1 text-center">
+        <div key={i} className={`text-center ${i === 0 ? 'w-32 mx-1' : 'flex-1'}`}>
           {t}
         </div>
       ))}

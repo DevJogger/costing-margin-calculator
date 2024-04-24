@@ -3,9 +3,9 @@ import { type Tab } from '@/types/Tabs'
 
 interface TabBarProps {
   onTabClick: (tab: Tab) => void
-  costSum: number
-  priceSum: number
-  marginSum: number
+  costTotal: number
+  priceTotal: number
+  marginTotal: number
 }
 
 const TABS: { name: Tab; background: string }[] = [
@@ -16,26 +16,26 @@ const TABS: { name: Tab; background: string }[] = [
 
 export default function TabBar({
   onTabClick,
-  costSum,
-  priceSum,
-  marginSum,
+  costTotal,
+  priceTotal,
+  marginTotal,
 }: TabBarProps) {
   return (
-    <footer className="flex h-16 gap-1 bg-white pb-2 dark:bg-stone-900">
+    <footer className="sticky bottom-0 flex h-16 gap-1 bg-white pb-2 dark:bg-stone-900">
       {TABS.map((tab, i) => (
         <div
           key={i}
-          className={`flex flex-1 flex-col justify-center truncate rounded-b-xl px-2 leading-tight text-white ${tab.background}`}
+          className={`flex flex-1 flex-col justify-center truncate rounded-b-xl p-2 leading-tight text-white ${tab.background}`}
           onClick={() => onTabClick(tab.name)}
         >
           <span className="capitalize">{tab.name}</span>
           <span>
             {showAsMoney(
               tab.name === 'cost'
-                ? costSum
+                ? costTotal
                 : tab.name === 'price'
-                  ? priceSum
-                  : marginSum,
+                  ? priceTotal
+                  : marginTotal,
             )}
           </span>
         </div>

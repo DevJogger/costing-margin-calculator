@@ -8,20 +8,23 @@ import { type Tab } from '@/types/Tabs'
 
 export default function Home() {
   const [page, setPage] = useState<Tab>('cost')
-  const [costSum, setCostSum] = useState(0)
-  const [priceSum, setPriceSum] = useState(0)
-  const marginSum = useMemo(() => priceSum - costSum, [priceSum, costSum])
+  const [costTotal, setCostTotal] = useState(0)
+  const [priceTotal, setPriceTotal] = useState(0)
+  const marginTotal = useMemo(
+    () => priceTotal - costTotal,
+    [priceTotal, costTotal],
+  )
   const onTabClick = (tab: Tab) => setPage(tab)
   return (
     <main className="flex h-dvh flex-col justify-between">
-      <CostPage setCostSum={setCostSum} hidden={page !== 'cost'} />
-      <PricePage setPriceSum={setPriceSum} hidden={page !== 'price'} />
+      <CostPage setCostTotal={setCostTotal} hidden={page !== 'cost'} />
+      <PricePage setPriceTotal={setPriceTotal} hidden={page !== 'price'} />
       <MarginPage hidden={page !== 'margin'} />
       <TabBar
         onTabClick={onTabClick}
-        costSum={costSum}
-        priceSum={priceSum}
-        marginSum={marginSum}
+        costTotal={costTotal}
+        priceTotal={priceTotal}
+        marginTotal={marginTotal}
       />
     </main>
   )
