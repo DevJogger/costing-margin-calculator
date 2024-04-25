@@ -27,7 +27,7 @@ export default function TabBar({
     onTabClick(tab)
   }
   return (
-    <nav className="sticky top-0 z-10 flex h-16 gap-2 bg-slate-200 pt-2 dark:bg-stone-900">
+    <nav className="sticky top-0 z-10 flex h-16 w-full gap-2 overflow-hidden bg-slate-200 pt-2 dark:bg-stone-900">
       {TABS.map((tab, i) => (
         <div
           key={i}
