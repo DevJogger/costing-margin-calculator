@@ -33,7 +33,8 @@ export default function PricePage({ setPriceTotal, hidden }: PricePageProps) {
   }
   return (
     <div
-      className={`flex-1 flex-col justify-between bg-cyan-700 text-white ${hidden ? 'hidden' : 'flex'}`}
+      className={`flex-1 flex-col justify-between ${hidden ? 'hidden' : 'flex'}`}
+      style={{ backgroundColor: 'var(--priceBg)', color: 'var(--priceText)' }}
     >
       <HeadBar title={['', 'Unit Price', 'Qty', 'TTL Revenue']} />
       <section className="flex-1 overflow-scroll">

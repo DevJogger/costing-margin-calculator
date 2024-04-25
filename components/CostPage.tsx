@@ -32,7 +32,8 @@ export default function CostPage({ setCostTotal, hidden }: CostPageProps) {
   }
   return (
     <div
-      className={`flex-1 flex-col justify-between bg-purple-800 text-white ${hidden ? 'hidden' : 'flex'}`}
+      className={`flex-1 flex-col justify-between ${hidden ? 'hidden' : 'flex'}`}
+      style={{ backgroundColor: 'var(--costBg)', color: 'var(--costText)' }}
     >
       <HeadBar title={['', 'Unit Cost', 'Qty', 'TTL Cost']} />
       <section className="flex-1">
