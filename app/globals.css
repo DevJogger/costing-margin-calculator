@@ -6,6 +6,13 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --costBg: #ffb000;
+  --priceBg: #1f5937;
+  --marginBg: #f7eed2;
+  --costText: #1f5937;
+  --priceText: #f7eed2;
+  --marginText: #1f5937;
+  --marginNegativeText: #f03f1e;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,5 +36,12 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

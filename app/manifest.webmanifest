@@ -1,0 +1,7 @@
+{
+  "display": "standalone",
+  "name": "Margin Calculator",
+  "short_name": "Margin Calculator",
+  "start_url": "/",
+  "theme_color": "pink"
+}

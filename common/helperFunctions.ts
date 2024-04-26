@@ -1,11 +1,13 @@
 const showAsMoney = (amount: number | string) => {
-  if (isNaN(Number(amount))) {
+  const numberAmount = Number(amount)
+  if (isNaN(numberAmount)) {
     return amount
   }
-  return new Intl.NumberFormat('en-US', {
+  const result = new Intl.NumberFormat('en-CA', {
     style: 'currency',
-    currency: 'USD',
-  }).format(Number(amount))
+    currency: 'CAD',
+  }).format(Math.abs(numberAmount))
+  return numberAmount < 0 ? `(${result})` : result
 }
 
 export { showAsMoney }
