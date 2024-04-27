@@ -15,8 +15,8 @@ export const viewport: Viewport = {
   userScalable: false,
   viewportFit: 'cover',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#E2E8F0' },
-    { media: '(prefers-color-scheme: dark)', color: '#1C1917' },
+    { media: '(prefers-color-scheme: light)', color: '#F1F5F9' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
   ],
 }
 
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex h-dvh flex-col">{children}</body>
+      <body className="standalone:h-lvh flex h-dvh flex-col">{children}</body>
     </html>
   )
 }

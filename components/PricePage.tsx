@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react'
-import HeadBar from '@/components/HeadBar'
+import TableHead from '@/components/TableHead'
 import Row from '@/components/Row'
 
 interface PricePageProps {
@@ -36,7 +36,7 @@ export default function PricePage({ setPriceTotal, hidden }: PricePageProps) {
       className={`flex-1 flex-col justify-between ${hidden ? 'hidden' : 'flex'}`}
       style={{ backgroundColor: 'var(--priceBg)', color: 'var(--priceText)' }}
     >
-      <HeadBar title={['', 'Unit Price', 'Qty', 'TTL Revenue']} />
+      <TableHead title={['', 'Unit Price', 'Qty', 'TTL Revenue']} />
       <section className="flex-1 overflow-scroll">
         {rows.map((el, i) => (
           <Row
@@ -47,10 +47,12 @@ export default function PricePage({ setPriceTotal, hidden }: PricePageProps) {
           />
         ))}
         <div
-          className="flex h-16 items-center justify-center text-sm odd:backdrop-contrast-75 even:backdrop-contrast-125"
+          className="flex h-16 items-center justify-center text-sm"
           onClick={addNewItem}
         >
-          <span className="rounded-full border px-6 py-2">+ Add New Item</span>
+          <span className="rounded-full border px-6 py-2 backdrop-saturate-150">
+            + Add New Item
+          </span>
         </div>
       </section>
     </div>

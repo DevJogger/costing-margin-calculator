@@ -23,7 +23,7 @@ export default function Home() {
         priceTotal={priceTotal}
         marginTotal={marginTotal}
       />
-      <main className="flex flex-col justify-between flex-1">
+      <main className="flex flex-1 flex-col justify-between">
         <CostPage setCostTotal={setCostTotal} hidden={page !== 'cost'} />
         <PricePage setPriceTotal={setPriceTotal} hidden={page !== 'price'} />
         <MarginPage hidden={page !== 'margin'} />

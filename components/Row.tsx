@@ -9,9 +9,10 @@ interface RowProps {
 
 export default function Row({ defaultName, updateSum, index }: RowProps) {
   const [rowName, setRowName] = useState(defaultName)
-  const [unit, setUnit] = useState(0)
-  const [qty, setQty] = useState(0)
+  const [unit, setUnit] = useState<number | undefined>(0)
+  const [qty, setQty] = useState<number | undefined>(0)
   const total = useMemo(() => {
+    if (!unit || !qty) return 0
     return unit * qty
   }, [unit, qty])
 
@@ -20,9 +21,9 @@ export default function Row({ defaultName, updateSum, index }: RowProps) {
   }, [total, updateSum, index])
 
   return (
-    <div className="flex h-16 items-center odd:backdrop-contrast-75 even:backdrop-contrast-125">
+    <div className="flex h-16 items-center hover:backdrop-brightness-95 border-t border-stone-50/15">
       <input
-        className="mx-1 w-32 bg-transparent text-center focus:outline-purple-600 truncate"
+        className="mx-1 w-32 truncate bg-transparent text-center focus:outline-purple-600"
         type="text"
         inputMode="text"
         value={rowName}
@@ -35,7 +36,10 @@ export default function Row({ defaultName, updateSum, index }: RowProps) {
         inputMode="decimal"
         value={unit}
         onFocus={(e) => e.target.select()}
-        onChange={(e) => setUnit(Number(e.target.value))}
+        onChange={(e) =>
+          setUnit(e.target.value === '' ? undefined : Number(e.target.value))
+        }
+        onBlur={(e) => (e.target.value === '' ? setUnit(0) : null)}
       />
       <input
         className="w-0 flex-1 bg-transparent text-center focus:outline-purple-600"
@@ -43,7 +47,10 @@ export default function Row({ defaultName, updateSum, index }: RowProps) {
         inputMode="decimal"
         value={qty}
         onFocus={(e) => e.target.select()}
-        onChange={(e) => setQty(Number(e.target.value))}
+        onChange={(e) =>
+          setQty(e.target.value === '' ? undefined : Number(e.target.value))
+        }
+        onBlur={(e) => (e.target.value === '' ? setUnit(0) : null)}
       />
       <div className="flex-1 text-center">{showAsMoney(total)}</div>
     </div>

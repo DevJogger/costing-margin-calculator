@@ -19,6 +19,9 @@ const config: Config = {
         'safe-left': 'env(safe-area-inset-left)',
         'safe-right': 'env(safe-area-inset-right)',
       },
+      screens: {
+        standalone: { raw: '(display-mode: standalone)' },
+      },
     },
   },
   plugins: [],

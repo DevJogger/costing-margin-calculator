@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react'
-import HeadBar from '@/components/HeadBar'
+import TableHead from '@/components/TableHead'
 import Row from '@/components/Row'
 
 interface CostPageProps {
@@ -35,7 +35,7 @@ export default function CostPage({ setCostTotal, hidden }: CostPageProps) {
       className={`flex-1 flex-col justify-between ${hidden ? 'hidden' : 'flex'}`}
       style={{ backgroundColor: 'var(--costBg)', color: 'var(--costText)' }}
     >
-      <HeadBar title={['', 'Unit Cost', 'Qty', 'TTL Cost']} />
+      <TableHead title={['', 'Unit Cost', 'Qty', 'TTL Cost']} />
       <section className="flex-1">
         {rows.map((el, i) => (
           <Row
@@ -46,10 +46,12 @@ export default function CostPage({ setCostTotal, hidden }: CostPageProps) {
           />
         ))}
         <div
-          className="flex h-16 items-center justify-center text-sm odd:backdrop-contrast-75 even:backdrop-contrast-125"
+          className="flex h-16 items-center justify-center text-sm"
           onClick={addNewItem}
         >
-          <span className="rounded-full border px-6 py-2">+ Add New Item</span>
+          <span className="rounded-full border px-6 py-2 backdrop-saturate-150">
+            + Add New Item
+          </span>
         </div>
       </section>
     </div>
