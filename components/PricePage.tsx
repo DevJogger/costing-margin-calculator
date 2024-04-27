@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react'
-import TableHead from '@/components/TableHead'
+import TableHeader from '@/components/TableHeader'
 import Row from '@/components/Row'
 
 interface PricePageProps {
@@ -36,7 +36,7 @@ export default function PricePage({ setPriceTotal, hidden }: PricePageProps) {
       className={`flex-1 flex-col justify-between ${hidden ? 'hidden' : 'flex'}`}
       style={{ backgroundColor: 'var(--priceBg)', color: 'var(--priceText)' }}
     >
-      <TableHead title={['', 'Unit Price', 'Qty', 'TTL Revenue']} />
+      <TableHeader title={['', 'Unit Price', 'Qty', 'TTL Revenue']} />
       <section className="flex-1 overflow-scroll">
         {rows.map((el, i) => (
           <Row

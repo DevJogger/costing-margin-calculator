@@ -1,8 +1,8 @@
-interface HeadBarProps {
+interface TableHeaderProps {
   title: string[]
 }
 
-export default function TableHead({ title }: HeadBarProps) {
+export default function TableHeader({ title }: TableHeaderProps) {
   return (
     <div className="flex h-16 items-center">
       {title.map((t, i) => (
