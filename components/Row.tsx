@@ -23,7 +23,7 @@ export default function Row({ defaultName, updateSum, index }: RowProps) {
   return (
     <div className="flex h-16 items-center hover:backdrop-brightness-95 border-t border-stone-50/15">
       <input
-        className="mx-1 w-32 truncate bg-transparent text-center focus:outline-purple-600"
+        className="mx-1 w-32 truncate bg-transparent text-center"
         type="text"
         inputMode="text"
         value={rowName}
@@ -31,7 +31,7 @@ export default function Row({ defaultName, updateSum, index }: RowProps) {
         onChange={(e) => setRowName(e.target.value)}
       />
       <input
-        className="w-0 flex-1 bg-transparent text-center focus:outline-purple-600"
+        className="w-0 flex-1 bg-transparent text-center"
         type="number"
         inputMode="decimal"
         value={unit}
@@ -42,7 +42,7 @@ export default function Row({ defaultName, updateSum, index }: RowProps) {
         onBlur={(e) => (e.target.value === '' ? setUnit(0) : null)}
       />
       <input
-        className="w-0 flex-1 bg-transparent text-center focus:outline-purple-600"
+        className="w-0 flex-1 bg-transparent text-center"
         type="number"
         inputMode="decimal"
         value={qty}

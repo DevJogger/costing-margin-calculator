@@ -37,7 +37,7 @@ export default function PricePage({ setPriceTotal, hidden }: PricePageProps) {
       style={{ backgroundColor: 'var(--priceBg)', color: 'var(--priceText)' }}
     >
       <TableHeader title={['', 'Unit Price', 'Qty', 'TTL Revenue']} />
-      <section className="flex-1 overflow-scroll">
+      <div className="flex-1 overflow-scroll">
         {rows.map((el, i) => (
           <Row
             key={i}
@@ -54,7 +54,7 @@ export default function PricePage({ setPriceTotal, hidden }: PricePageProps) {
             + Add New Item
           </span>
         </div>
-      </section>
+      </div>
     </div>
   )
 }

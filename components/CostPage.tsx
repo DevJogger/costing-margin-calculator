@@ -36,7 +36,7 @@ export default function CostPage({ setCostTotal, hidden }: CostPageProps) {
       style={{ backgroundColor: 'var(--costBg)', color: 'var(--costText)' }}
     >
       <TableHeader title={['', 'Unit Cost', 'Qty', 'TTL Cost']} />
-      <section className="flex-1">
+      <div className="flex-1">
         {rows.map((el, i) => (
           <Row
             key={i}
@@ -53,7 +53,7 @@ export default function CostPage({ setCostTotal, hidden }: CostPageProps) {
             + Add New Item
           </span>
         </div>
-      </section>
+      </div>
     </div>
   )
 }
