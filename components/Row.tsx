@@ -21,7 +21,7 @@ export default function Row({ defaultName, updateSum, index }: RowProps) {
   }, [total, updateSum, index])
 
   return (
-    <div className="flex h-16 items-center hover:backdrop-brightness-95 border-t border-stone-50/15">
+    <div className="flex h-16 items-center border-t border-stone-50/15 hover:backdrop-brightness-95">
       <input
         className="mx-1 w-32 truncate bg-transparent text-center"
         type="text"

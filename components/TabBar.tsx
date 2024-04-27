@@ -27,7 +27,7 @@ export default function TabBar({
     onTabClick(tab)
   }
   return (
-    <header className="sticky top-0 z-10 flex w-full flex-col overflow-hidden bg-gradient-to-bl from-slate-100 to-amber-50 pt-safe-top dark:from-slate-900 dark:to-neutral-950">
+    <header className="pt-safe-top sticky top-0 z-10 flex w-full flex-none flex-shrink-0 flex-grow-0 flex-col overflow-hidden bg-gradient-to-bl from-slate-100 to-amber-50 dark:from-slate-900 dark:to-neutral-950">
       <div className="pt-2"></div>
       <div className="flex gap-2">
         {TABS.map((tab, i) => (
@@ -43,23 +43,21 @@ export default function TabBar({
             }
             onClick={() => handleOnClick(tab.name)}
           >
+            {/* invert border radius - left */}
             <div
-              className="absolute -left-4 bottom-0 h-4 w-4 text-[0]"
+              className="absolute -left-4 bottom-0 h-4 w-4"
               style={{
                 background: `radial-gradient(circle at 0 0, transparent 1rem, var(${tab.background}) 1rem)`,
               }}
-            >
-              invert border radius - left
-            </div>
+            ></div>
+            {/* invert border radius - right */}
             <div
-              className="absolute -right-4 bottom-0 h-4 w-4 text-[0]"
+              className="absolute -right-4 bottom-0 h-4 w-4"
               style={{
                 background: `radial-gradient(circle at 100% 0, transparent 1rem, var(${tab.background}) 1rem)`,
               }}
-            >
-              invert border radius - right
-            </div>
-            <span className="capitalize font-medium">{tab.name}</span>
+            ></div>
+            <span className="font-medium capitalize">{tab.name}</span>
             <span
               style={
                 tab.name === 'margin' && marginTotal < 0

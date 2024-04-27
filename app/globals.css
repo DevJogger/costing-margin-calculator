@@ -13,6 +13,8 @@
   --priceText: #f7eed2;
   --marginText: #1f5937;
   --marginNegativeText: #f03f1e;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -36,12 +38,5 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
   }
 }
