@@ -1,32 +1,18 @@
 'use client'
-import { useState, useMemo } from 'react'
-import CostPage from '@/components/CostPage'
-import PricePage from '@/components/PricePage'
-import MarginPage from '@/components/MarginPage'
+import { useStore } from '@/common/store'
+import Table from '@/components/Table'
+import MarginTab from '@/components/MarginTab'
 import TabBar from '@/components/TabBar'
-import type { Tab } from '@/common/types'
 
 export default function Home() {
-  const [page, setPage] = useState<Tab>('cost')
-  const [costTotal, setCostTotal] = useState(0)
-  const [priceTotal, setPriceTotal] = useState(0)
-  const marginTotal = useMemo(
-    () => priceTotal - costTotal,
-    [priceTotal, costTotal],
-  )
-  const onTabClick = (tab: Tab) => setPage(tab)
+  const activeTab = useStore((state) => state.activeTab)
+
   return (
     <>
-      <TabBar
-        onTabClick={onTabClick}
-        costTotal={costTotal}
-        priceTotal={priceTotal}
-        marginTotal={marginTotal}
-      />
+      <TabBar />
       <main className="flex flex-1 flex-col justify-between">
-        <CostPage setCostTotal={setCostTotal} hidden={page !== 'cost'} />
-        <PricePage setPriceTotal={setPriceTotal} hidden={page !== 'price'} />
-        <MarginPage hidden={page !== 'margin'} />
+        <Table />
+        <MarginTab hidden={activeTab !== 'margin'} />
       </main>
     </>
   )

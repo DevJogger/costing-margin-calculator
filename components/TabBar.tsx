@@ -1,13 +1,7 @@
-import { useState } from 'react'
+import { useMemo } from 'react'
+import { useStore } from '@/common/store'
 import { showAsMoney } from '@/common/helperFunctions'
 import type { Tab } from '@/common/types'
-
-interface TabBarProps {
-  onTabClick: (tab: Tab) => void
-  costTotal: number
-  priceTotal: number
-  marginTotal: number
-}
 
 const TABS: { name: Tab; background: string; textColor: string }[] = [
   { name: 'cost', background: '--costBg', textColor: '--costText' },
@@ -15,19 +9,30 @@ const TABS: { name: Tab; background: string; textColor: string }[] = [
   { name: 'margin', background: '--marginBg', textColor: '--marginText' },
 ]
 
-export default function TabBar({
-  onTabClick,
-  costTotal,
-  priceTotal,
-  marginTotal,
-}: TabBarProps) {
-  const [activeTab, setActiveTab] = useState<Tab>('cost')
-  const handleOnClick = (tab: Tab) => {
-    setActiveTab(tab)
-    onTabClick(tab)
-  }
+export default function TabBar() {
+  const activeTab = useStore((state) => state.activeTab)
+  const setTab = useStore((state) => state.setTab)
+
+  const costData = useStore((state) => state.costData)
+  const productData = useStore((state) => state.productData)
+
+  const costTotal = useMemo(() => {
+    return (
+      costData.reduce((pre, cur) => pre + cur?.unitCost * cur?.qty, 0) +
+      productData.reduce((pre, cur) => pre + cur?.unitCost * cur?.qty, 0)
+    )
+  }, [costData, productData])
+  const priceTotal = useMemo(() => {
+    return productData.reduce((pre, cur) => pre + cur?.unitPrice * cur?.qty, 0)
+  }, [productData])
+
+  const marginTotal = useMemo(
+    () => priceTotal - costTotal,
+    [priceTotal, costTotal],
+  )
+
   return (
-    <header className="pt-safe-top sticky top-0 z-10 flex w-full flex-none flex-shrink-0 flex-grow-0 flex-col overflow-hidden bg-gradient-to-bl from-slate-100 to-amber-50 dark:from-slate-900 dark:to-neutral-950">
+    <header className="sticky top-0 z-10 flex w-full flex-none flex-shrink-0 flex-grow-0 flex-col overflow-hidden bg-gradient-to-bl from-slate-100 to-amber-50 pt-safe-top dark:from-slate-900 dark:to-neutral-950">
       <div className="pt-2"></div>
       <div className="flex gap-2">
         {TABS.map((tab, i) => (
@@ -41,7 +46,7 @@ export default function TabBar({
                 zIndex: `${activeTab === tab.name ? '10' : 9 - i}`,
               } as React.CSSProperties
             }
-            onClick={() => handleOnClick(tab.name)}
+            onClick={() => setTab(tab.name)}
           >
             {/* invert border radius - left */}
             <div
