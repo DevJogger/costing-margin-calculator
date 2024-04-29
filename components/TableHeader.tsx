@@ -9,7 +9,13 @@ export default function TableHeader() {
   ]
 
   return (
-    <div className="sticky top-[calc(env(safe-area-inset-top)+4rem)] z-10 flex h-16 items-center bg-inherit">
+    <div
+      className="sticky top-[calc(env(safe-area-inset-top)+4rem)] z-10 flex h-16 items-center"
+      style={{
+        backgroundColor:
+          activeTab === 'cost' ? 'var(--costBg)' : 'var(--priceBg)',
+      }}
+    >
       <div className="mx-1 w-32"></div>
       {header.map((column, i) => (
         <div key={i} className="flex-1 text-center font-medium">
