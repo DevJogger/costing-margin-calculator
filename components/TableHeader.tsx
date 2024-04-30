@@ -10,7 +10,7 @@ export default function TableHeader() {
 
   return (
     <div
-      className="sticky top-[calc(env(safe-area-inset-top)+4rem)] z-10 flex h-16 items-center"
+      className="sticky top-[calc(env(safe-area-inset-top)+4rem)] z-10 flex h-14 items-center drop-shadow-sm"
       style={{
         backgroundColor:
           activeTab === 'cost' ? 'var(--costBg)' : 'var(--priceBg)',

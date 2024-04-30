@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/uuid": "^9.0.8",
+    "lucide-react": "^0.376.0",
     "next": "14.2.1",
     "react": "^18",
     "react-dom": "^18",

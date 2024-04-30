@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="standalone:h-lvh flex h-dvh flex-col">{children}</body>
+      <body className="standalone:h-lvh flex min-h-dvh flex-col">{children}</body>
     </html>
   )
 }

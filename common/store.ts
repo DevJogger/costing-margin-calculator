@@ -8,6 +8,7 @@ interface State {
   costData: Row[]
   productData: Row[]
   activeTab: Tab
+  resetPopupSwitch: boolean
 }
 
 interface Actions {
@@ -19,12 +20,15 @@ interface Actions {
     type: 'cost' | 'product',
     id: string,
   ) => void
+  triggerResetPopup: () => void
+  resetData: () => void
 }
 
 export const useStore = create<State & Actions>()((set) => ({
   costData: defaultCostData,
   productData: defaultProductData,
   activeTab: 'cost',
+  resetPopupSwitch: false,
   setTab: (activeTab) => set({ activeTab }),
   addNewItem: (type) => {
     if (type === 'cost') {
@@ -83,6 +87,8 @@ export const useStore = create<State & Actions>()((set) => ({
       return { productData }
     })
   },
+  triggerResetPopup: () => set((state) => ({ resetPopupSwitch: !state.resetPopupSwitch })),
+  resetData: () => set({ costData: defaultCostData, productData: defaultProductData }),
 }))
 
 if (process.env.NODE_ENV === 'development') {
