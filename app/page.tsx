@@ -11,8 +11,8 @@ export default function Home() {
     <>
       <TabBar />
       <main className="flex flex-1 flex-col justify-between">
-        <Table />
-        <MarginTab hidden={activeTab !== 'margin'} />
+        {activeTab !== 'margin' && <Table />}
+        {activeTab === 'margin' && <MarginTab />}
       </main>
     </>
   )

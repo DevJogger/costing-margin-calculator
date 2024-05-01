@@ -10,21 +10,28 @@ export default function ResetPopup() {
   }
 
   return (
-    <div className="fixed left-0 top-0 z-50 flex h-dvh w-full items-center justify-center bg-black/25">
-      <div className="rounded-lg bg-white p-4 drop-shadow-md">
+    <div className="fixed left-0 top-0 z-50 flex h-dvh w-full items-center justify-center bg-black/15 backdrop-blur-sm">
+      <div
+        className="rounded-lg p-4 drop-shadow-md"
+        style={{
+          backgroundColor: 'var(--marginBg)',
+          color: 'var(--marginText)',
+        }}
+      >
         <div className="text-center text-xl font-bold">Reset All?</div>
         <div className="mt-4 flex justify-center gap-2">
           <button
-            className="w-24 rounded-md bg-gray-200 px-4 py-2"
+            className="w-24 rounded-md px-4 py-2 backdrop-brightness-110"
+            style={{color: 'var(--marginNegativeText)',}}
             onClick={handleConfirmOnClick}
           >
-            Yes
+            Reset
           </button>
           <button
-            className="w-24 rounded-md bg-gray-200 px-4 py-2"
+            className="w-24 rounded-md px-4 py-2 backdrop-brightness-110"
             onClick={triggerResetPopup}
           >
-            No
+            Cancel
           </button>
         </div>
       </div>

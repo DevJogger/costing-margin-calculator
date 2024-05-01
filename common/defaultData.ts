@@ -3,7 +3,7 @@ import type { Row } from '@/common/types'
 
 const defaultProductData: Row[] = [
   {
-    name: 'Item 1',
+    name: 'Product 1',
     unitCost: 0,
     unitPrice: 0,
     qty: 1,
@@ -11,7 +11,7 @@ const defaultProductData: Row[] = [
     id: uuidv4(),
   },
   {
-    name: 'Item 2',
+    name: 'Product 2',
     unitCost: 0,
     unitPrice: 0,
     qty: 1,

@@ -51,7 +51,7 @@ export const useStore = create<State & Actions>()((set) => ({
       productData: [
         ...state.productData,
         {
-          name: `Item ${state.productData.length + 1}`,
+          name: `Product ${state.productData.length + 1}`,
           unitCost: 0,
           unitPrice: 0,
           qty: 1,

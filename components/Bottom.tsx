@@ -1,10 +1,9 @@
 import { Trash2 } from 'lucide-react'
 import { useStore } from '@/common/store'
-import ResetPopup from '@/components/ResetPopup'
+
 
 export default function Bottom() {
   const activeTab = useStore((state) => state.activeTab)
-  const resetPopupSwitch = useStore((state) => state.resetPopupSwitch)
   const triggerResetPopup = useStore((state) => state.triggerResetPopup)
   return (
     <div
@@ -15,7 +14,6 @@ export default function Bottom() {
       }}
     >
       <Trash2 onClick={triggerResetPopup} />
-      {resetPopupSwitch && <ResetPopup />}
     </div>
   )
 }

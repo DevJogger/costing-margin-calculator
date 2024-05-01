@@ -1,14 +1,16 @@
 import { useMemo } from 'react'
+import { useStore } from '@/common/store'
 import TableHeader from '@/components/TableHeader'
 import Row from '@/components/Row'
-import AddItemButtonProps from '@/components/AddItemButton'
+import AddItemButton from '@/components/AddItemButton'
 import Bottom from '@/components/Bottom'
-import { useStore } from '@/common/store'
+import ResetPopup from '@/components/ResetPopup'
 
 export default function Table() {
   const activeTab = useStore((state) => state.activeTab)
   const costData = useStore((state) => state.costData)
   const productData = useStore((state) => state.productData)
+  const resetPopupSwitch = useStore((state) => state.resetPopupSwitch)
 
   const costDataToShow = useMemo(() => {
     return costData.map((row) => {
@@ -23,7 +25,7 @@ export default function Table() {
   }, [costData, productData])
   return (
     <div
-      className={`flex-1 flex-col justify-between ${activeTab === 'margin' ? 'hidden' : 'flex'}`}
+      className="flex flex-1 flex-col justify-between"
       style={{
         backgroundColor:
           activeTab === 'cost' ? 'var(--costBg)' : 'var(--priceBg)',
@@ -31,25 +33,30 @@ export default function Table() {
       }}
     >
       <TableHeader />
-      <div className={`flex-1 ${activeTab !== 'cost' ? 'hidden' : ''}`}>
-        {costDataToShow.map((row, i) => {
-          return (
-            <div key={i} className="flex flex-col">
-              <Row row={row} />
-              {row.children?.map((child, j) => <Row key={j} row={child} />)}
-              {!!row.children && <AddItemButtonProps type="product" />}
-            </div>
-          )
-        })}
-        <AddItemButtonProps type="cost" />
-      </div>
-      <div className={`flex-1 ${activeTab !== 'price' ? 'hidden' : ''}`}>
-        {productData.map((row, i) => (
-          <Row key={i} row={row} />
-        ))}
-        <AddItemButtonProps type="product" />
-      </div>
+      {activeTab === 'cost' && (
+        <div className="flex-1">
+          {costDataToShow.map((row, i) => {
+            return (
+              <div key={i} className="flex flex-col">
+                <Row row={row} />
+                {row.children?.map((child, j) => <Row key={j} row={child} />)}
+                {!!row.children && <AddItemButton type="product" />}
+              </div>
+            )
+          })}
+          <AddItemButton type="cost" />
+        </div>
+      )}
+      {activeTab === 'price' && (
+        <div className="flex-1">
+          {productData.map((row, i) => (
+            <Row key={i} row={row} />
+          ))}
+          <AddItemButton type="product" />
+        </div>
+      )}
       <Bottom />
+      {resetPopupSwitch && <ResetPopup />}
     </div>
   )
 }
