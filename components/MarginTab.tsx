@@ -22,15 +22,17 @@ export default function MarginTab() {
 
   return (
     <div
-      className="flex flex-1 text-2xl p-8"
+      className="flex flex-1 p-8 text-2xl"
       style={{ backgroundColor: 'var(--marginBg)', color: 'var(--marginText)' }}
     >
-      <div className="flex flex-col w-full">
-        <span className=''>Gross Margin $</span>
-        <span className='text-5xl font-semibold flex justify-center leading-loose'>{showAsMoney(marginTotal)}</span>
-        <span className=''>Gross Margin %</span>
-        <span className='text-5xl font-semibold flex justify-center leading-loose'>
-          {`${priceTotal === 0 ? 0 : ((marginTotal / priceTotal) * 100).toFixed(2)}`}
+      <div className="flex w-full flex-col">
+        <span className="">Gross Margin $</span>
+        <span className="flex justify-center text-5xl font-semibold leading-loose">
+          {showAsMoney(marginTotal)}
+        </span>
+        <span className="">Gross Margin %</span>
+        <span className="flex justify-center text-5xl font-semibold leading-loose">
+          {priceTotal === 0 ? 0 : ((marginTotal / priceTotal) * 100).toFixed(2)}
           %
         </span>
       </div>
