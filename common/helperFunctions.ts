@@ -6,8 +6,8 @@ const showAsMoney = (amount: number | string) => {
   const result = new Intl.NumberFormat('en-CA', {
     style: 'currency',
     currency: 'CAD',
-  }).format(Math.abs(numberAmount))
-  return numberAmount < 0 ? `(${result})` : result
+  }).format(numberAmount)
+  return result
 }
 
 export { showAsMoney }

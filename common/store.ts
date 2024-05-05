@@ -20,6 +20,7 @@ interface Actions {
     type: 'cost' | 'product',
     id: string,
   ) => void
+  deleteItem: (type: 'cost' | 'product', id: string) => void
   triggerResetPopup: () => void
   resetData: () => void
 }
@@ -86,6 +87,17 @@ export const useStore = create<State & Actions>()((set) => ({
       })
       return { productData }
     })
+  },
+  deleteItem: (type, id) => {
+    if (type === 'cost') {
+      set((state) => ({
+        costData: state.costData.filter((row) => row.id !== id),
+      }))
+      return
+    }
+    set((state) => ({
+      productData: state.productData.filter((row) => row.id !== id),
+    }))
   },
   triggerResetPopup: () => set((state) => ({ resetPopupSwitch: !state.resetPopupSwitch })),
   resetData: () => set({ costData: defaultCostData, productData: defaultProductData }),
