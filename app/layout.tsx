@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { SerwistProvider } from './serwist'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -201,7 +202,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex min-h-dvh flex-col standalone:h-lvh">
-        {children}
+        <SerwistProvider swUrl="/serwist/sw.js">{children}</SerwistProvider>
       </body>
     </html>
   )
